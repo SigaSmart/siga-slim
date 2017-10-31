@@ -1,0 +1,5 @@
+/public/uploads/
+/vendor/
+/logs/*
+!/logs/README.md
+/nbproject/*

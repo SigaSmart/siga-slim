@@ -1,0 +1,23 @@
+<div class="col-md-3">
+    <a href="<?= $this->router->pathFor(sprintf('%s.create',$route)) ?>" class="btn btn-primary btn-block margin-bottom">Cadatrar</a>
+
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Resumo</h3>
+
+            <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#"><i class="fa fa-inbox"></i> Total <span class="label label-primary pull-right"><?= $model->query()->count(); ?></span></a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-check"></i> Publicado <span class="label label-primary pull-right"><?= $model->where('status',1)->count(); ?></span></a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-unchecked"></i> Desativado <span class="label label-primary pull-right"><?= $model->where('status',0)->count(); ?></span></a></li>
+            </ul>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</div>

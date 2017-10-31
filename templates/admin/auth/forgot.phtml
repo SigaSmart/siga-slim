@@ -1,0 +1,26 @@
+<div class="register-box">
+    <div class="register-logo">
+        <a href="/"><b>Admin</b>LTE</a>
+    </div>
+    <div class="register-box-body">
+        <p class="login-box-msg"><?=$this->getAttribute('alert')->msg($defaultMsg);?></p>
+
+        <form action="<?=$this->getAttribute('router')->pathFor('register');?>" method="post">
+            <div class="form-group has-feedback">
+                <input type="email" name="email" class="form-control" placeholder="Email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+           <div class="row">
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                </div>
+                <?=$this->getAttribute('csrf');?>
+                <!-- /.col -->
+            </div>
+        </form>
+        <a href="<?=$this->getAttribute('router')->pathFor('login');?>" class="text-center">I already have a membership</a>
+    </div>
+    <!-- /.form-box -->
+</div>
+<!-- /.register-box -->

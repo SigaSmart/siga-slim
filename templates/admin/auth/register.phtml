@@ -1,0 +1,53 @@
+<div class="register-box">
+    <div class="register-logo">
+        <a href="/"><b>Admin</b>LTE</a>
+    </div>
+    <div class="register-box-body">
+        <p class="login-box-msg"><?=$this->getAttribute('alert')->msg($defaultMsg);?></p>
+        <form action="<?=$this->getAttribute('router')->pathFor('register');?>" method="post">
+            <div class="form-group has-feedback <?=$validation->getError('first_name');?>">
+                <input type="text" name="first_name" class="form-control" placeholder="Full name">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                 <small class="help-block"><?=$validation->getErrorMsg('first_name');?></small>
+            </div>
+            <div class="form-group has-feedback <?=$validation->getError('last_name');?>">
+                <input type="text" name="last_name" class="form-control" placeholder="Last name">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <small class="help-block"><?=$validation->getErrorMsg('last_name');?></small>
+            </div>
+            <div class="form-group has-feedback <?=$validation->getError('email');?>">
+                <input type="email" name="email" class="form-control" placeholder="Email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <small class="help-block"><?=$validation->getErrorMsg('email');?></small>
+            </div>
+            <div class="form-group has-feedback <?=$validation->getError('password');?>">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <small class="help-block"><?=$validation->getErrorMsg('password');?></small>
+            </div>
+            <div class="form-group has-feedback <?=$validation->getError('retype_password');?>">
+                <input type="password" name="retype_password" class="form-control" placeholder="Retype password">
+                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                <small class="help-block"><?=$validation->getErrorMsg('retype_password');?></small>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> I agree to the <a href="#">terms</a>
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                </div>
+                <?=$this->getAttribute('csrf');?>
+                <!-- /.col -->
+            </div>
+        </form>
+        <a href="<?=$this->getAttribute('router')->pathFor('login');?>" class="text-center">I already have a membership</a>
+    </div>
+    <!-- /.form-box -->
+</div>
+<!-- /.register-box -->

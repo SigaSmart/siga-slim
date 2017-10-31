@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/autoload.php';
+
+use Symfony\Component\Console\Application;
+
+$application = new Application;
+
+$application->add(new \SIGA\Core\Commands\ServerCommand);
+$application->add(new \SIGA\Migrations\Commands\InitCommand);
+$application->add(new \SIGA\Migrations\Commands\MigrationCommand);
+$application->add(new \SIGA\Migrations\Commands\SeedCommand);
+$application->add(new \SIGA\Migrations\Commands\SeedCreateCommand);
+$application->add(new \SIGA\Migrations\Commands\RollbackCommand());
+$application->add(new \SIGA\Migrations\Commands\StatusCommand());
+$application->add(new \SIGA\Migrations\Commands\MakeCommand());
+
+$application->run();

@@ -1,0 +1,53 @@
+<?php if ($data): ?>
+    <?php foreach ($data as $item): ?>
+        <div class="col-md-3 <?= $item->id ?>" id="<?= $item->id ?>" style="min-height: 364px">
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="<?= base_url($item->cover) ?>" alt="User profile picture">
+
+                    <h3 class="profile-username text-center"><?= $item->name; ?></h3>
+
+                    <p class="text-muted text-center"><?= $item->status; ?></p>
+
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Costs</b> <a class="pull-right"><?= $item->costs; ?></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Marge</b> <a class="pull-right"><?= $item->marge; ?></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Price</b> <a class="pull-right"><?= $item->price; ?></a>
+                        </li>
+                    </ul>
+                    <a href="<?=
+                    $route->pathFor('products.edit', [
+                        'id' => $item->id
+                    ])
+                    ?>" class="btn btn-primary  btn-flat"><i class="fa fa-pencil"></i></a>
+                    <a href="<?=
+                    $route->pathFor('products.delete', [
+                        'id' => $item->id
+                    ])
+                    ?>" class="btn btn-danger btn-flat action-delete"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            <!-- About Me Box -->
+            <!-- /.box -->
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+<div class="error-page">
+        <h2 class="headline text-red">500</h2>
+        <div class="error-content">
+          <h3><i class="fa fa-warning text-red"></i> Oops! Something went wrong.</h3>
+          <p>
+            We will work on fixing that right away.
+            Meanwhile, you may <a href="/admin">return to dashboard</a> or try using the search form.
+          </p>
+        </div>
+      </div>
+<?php endif; ?>

@@ -1,0 +1,100 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Administração
+            <small>Lista De Produtos</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+
+                        <div class="box-header">
+                            <h3 class="box-title">Buscar Produtos</h3>
+                            <form class="form-horizontal ajaxFormHtml" action="<?= $this->router->pathFor('products.busca') ?>">
+                                <div class="form-group margin-bottom-none">
+                                    <div class="col-sm-9">
+                                        <input type="text" id="busca" name="busca" class="form-control input-lg" placeholder="Buscar Produtos">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button type="submit" class="btn btn-danger pull-right btn-block btn-lg">Buscar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <?= $this->getAttribute('alert')->alerts(); ?>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row" id="output">
+                                <?php if ($data): ?>
+                                    <?php foreach ($data as $item): ?>
+                                        <div class="col-md-3 <?= $item->id ?>" id="<?= $item->id ?>" style="min-height: 364px">
+                                            <!-- Profile Image -->
+                                            <div class="box box-primary">
+                                                <div class="box-body box-profile">
+                                                    <img class="profile-user-img img-responsive img-circle" src="<?= base_url($item->cover) ?>" alt="User profile picture">
+
+                                                    <h3 class="profile-username text-center"><?= $item->name; ?></h3>
+
+                                                    <p class="text-muted text-center"><?= $item->status; ?></p>
+
+                                                    <ul class="list-group list-group-unbordered">
+                                                        <li class="list-group-item">
+                                                            <b>Costs</b> <a class="pull-right"><?= $item->costs; ?></a>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <b>Marge</b> <a class="pull-right"><?= $item->marge; ?></a>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <b>Price</b> <a class="pull-right"><?= $item->price; ?></a>
+                                                        </li>
+                                                    </ul>
+                                                    <a href="<?=
+                                                    $route->pathFor('products.edit', [
+                                                        'id' => $item->id
+                                                    ])
+                                                    ?>" class="btn btn-primary  btn-flat"><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?=
+                                                    $route->pathFor('products.delete', [
+                                                        'id' => $item->id
+                                                    ])
+                                                    ?>" class="btn btn-danger btn-flat action-delete"><i class="fa fa-trash-o"></i></a>
+                                                </div>
+                                                <!-- /.box-body -->
+                                            </div>
+                                            <!-- /.box -->
+                                            <!-- About Me Box -->
+                                            <!-- /.box -->
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+
+    </section>
+    <!-- /.content -->
+</div>
+<script>
+    var selectURL = '/api/busca';
+</script>

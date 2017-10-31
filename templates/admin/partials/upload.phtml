@@ -1,0 +1,18 @@
+<form id="ajaxForm-upload" action="<?= $router->pathFor(sprintf('%s.upload',$route)) ?>" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?= $id ?>">
+    <div class="box box-primary">
+        <div class="box-body box-profile">
+            <img data-cover="<?= base_url($cover) ?>" id="attachment" class="profile-user-img img-responsive img-circle" src="<?= base_url($cover) ?>" alt="<?=$name;?>">
+            <h3 class="profile-username text-center"><?= $name ?></h3>
+            <?= $this->getAttribute('csrf'); ?>
+            <div class="form-group">
+                <div class="btn btn-default btn-file btn-block">
+                    <i class="fa fa-paperclip"></i> Attachment
+                    <input  type="file" name="attachment">
+                </div>
+                <p class="help-block">Max. 32MB</p>
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</form>

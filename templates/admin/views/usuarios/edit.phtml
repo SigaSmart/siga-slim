@@ -1,0 +1,107 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Administração
+            <small>Lista De Usuarios</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3">
+                <form id="ajaxForm-upload" action="<?= $this->getAttribute('router')->pathFor('usuarios.upload') ?>" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?= $data->id ?>">
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <img data-cover="<?= base_url($data->cover) ?>" id="attachment" class="profile-user-img img-responsive img-circle" src="<?= base_url($data->cover) ?>" alt="User profile picture">
+                            <h3 class="profile-username text-center"><?= $data->first_name ?> <?= $data->last_name ?></h3>
+                            <p class="text-muted text-center"><?= $data->email ?></p>
+                            <?= $this->getAttribute('csrf'); ?>
+                            <div class="form-group">
+                                <div class="btn btn-default btn-file btn-block">
+                                    <i class="fa fa-paperclip"></i> Attachment
+                                    <input  type="file" name="attachment">
+                                </div>
+                                <p class="help-block">Max. 32MB</p>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-9">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#dados" data-toggle="tab" aria-expanded="true">Dados Do Usuario</a></li>
+                        <li class=""><a href="#passwords" data-toggle="tab" aria-expanded="false">Alterar Senha</a></li>
+                        <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="dados">
+                            <form role="form" action="<?= $this->getAttribute('router')->pathFor('usuarios.store') ?>" class="ajaxForm">
+                                <input type="hidden" name="id" value="<?= $data->id ?>">
+                                <div class="form-group">
+                                    <label for="first_name">First Name</label>
+                                    <input class="form-control" id="email" name="first_name" placeholder="First Name" type="text" value="<?= $data->first_name ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name">Last Name</label>
+                                    <input class="form-control" id="email" name="last_name" placeholder="Last Name" type="text" value="<?= $data->last_name ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input class="form-control" readonly id="email" name="email" placeholder="Enter email" type="email" value="<?= $data->email ?>">
+                                </div>
+                                <?= $this->getAttribute('csrf'); ?>
+                                <!-- /.box-body -->
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="passwords">
+                            <form role="form" action="<?= $this->getAttribute('router')->pathFor('usuarios.reset.password') ?>" class="ajaxForm">
+                                <input type="hidden" name="id" value="<?= $data->id ?>">
+                                <div class="form-group">
+                                    <label for="password_old">Old Password</label>
+                                    <input name="password_old" class="form-control" id="password_old" placeholder="Old Password" type="password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">New Password</label>
+                                    <input class="form-control" id="password" name="password" placeholder="New Password" type="password">
+                                </div>                                               
+                                <?= $this->getAttribute('csrf'); ?>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Alterar Senha</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_3">
+
+                        </div>
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+
+            </div>
+
+        </div>
+
+</div>
+<!-- /.box -->
+</section>
+</div>
+<!-- /.col -->
